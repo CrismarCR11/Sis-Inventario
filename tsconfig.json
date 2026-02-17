@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "preserve",
+        "strict": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",  // 👈 BASE URL DEBE SER "."
+        "paths": {
+            "@/*": ["resources/js/*"]  // 👈 ESTA ES LA CLAVE
+        },
+        "types": ["vite/client", "node"]
+    },
+    "include": [
+        "resources/js/**/*.ts", 
+        "resources/js/**/*.vue", 
+        "vite.config.ts"
+    ],
+    "exclude": ["node_modules"]
+}
