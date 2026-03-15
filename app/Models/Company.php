@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
     //
+    use GeneratesUuid;
     protected $fillable = [
         'uuid',
         'ruc',
@@ -23,6 +25,16 @@ class Company extends Model
     protected $casts = [
         'configuracion' => 'array',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 
     public function locals()
     {

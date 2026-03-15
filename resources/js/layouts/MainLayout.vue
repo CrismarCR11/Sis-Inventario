@@ -206,6 +206,8 @@ const menuItems = [
   { title: 'Movimientos', icon: 'mdi-transfer', to: '/movimientos' },
   { title: 'Reportes', icon: 'mdi-chart-bar', to: '/reportes' },
   { title: 'Configuración', icon: 'mdi-cog', to: '/configuracion' },
+  { title: 'Empresas', icon: 'mdi-cog', to: '/companies' },
+  { title: 'Empresa2', icon: 'mdi-cog', to: '/companies/:id' },
 ];
 
 // Obtener iniciales

@@ -22,6 +22,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'empresa_id',
+        'locales_acceso',
+    ];
+
+    protected $casts = [
+        'locales_acceso' => 'array',
     ];
 
     /**

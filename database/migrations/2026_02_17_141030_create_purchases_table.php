@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('proveedor_id');
             $table->string('numero_orden', 100)->nullable();
             $table->string('numero_factura', 100)->nullable();
-            $table->date('fecha_compra')->notNull();
+            $table->date('fecha_compra');
             $table->date('fecha_entrega_estimada')->nullable();
             $table->date('fecha_entrega_real')->nullable();
             $table->enum('estado', ['pendiente', 'aprobada', 'enviada', 'parcial', 'recibida', 'anulada'])->default('pendiente');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->decimal('descuento', 12, 2)->default(0);
             $table->decimal('total', 12, 2);
             $table->text('observaciones')->nullable();
-            $table->unsignedBigInteger('usuario_id')->notNull();
+            $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
     
             $table->foreign('empresa_id')->references('id')->on('companies')->onDelete('restrict');

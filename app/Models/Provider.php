@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Provider extends Model
 {
     //
+    use GeneratesUuid;
     protected $fillable = [
         'uuid',
         'empresa_id',
@@ -23,6 +25,15 @@ class Provider extends Model
         'dias_entrega_promedio',
         'activo',
     ];
+
+    protected $casts = [
+        'activo' => 'boolean',
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 
     public function company()
     {

@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Inventory extends Model
 {
     //
+    use GeneratesUuid;
     protected $fillable = [
         'uuid',
         'producto_id',
@@ -20,9 +22,21 @@ class Inventory extends Model
         'ultimo_conteo',
     ];
 
+    protected $casts = [
+        'fecha_vencimiento' => 'date',
+        'stock_actual' => 'integer',
+        'stock_reservado' => 'integer',
+        'stock_disponible' => 'integer',
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'producto_id');
     }
 
     public function local()

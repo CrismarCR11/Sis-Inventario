@@ -8,7 +8,6 @@ class PurchaseDetail extends Model
 {
     //
     protected $fillable = [
-        'uuid',
         'compra_id',
         'producto_id',
         'cantidad',
@@ -18,6 +17,15 @@ class PurchaseDetail extends Model
         'subtotal',
         'lote',
         'fecha_vencimiento',
+    ];
+
+    protected $casts = [
+        'cantidad' => 'integer',
+        'cantidad_recibida' => 'integer',
+        'precio_unitario' => 'decimal:2',
+        'descuento' => 'decimal:2',
+        'subtotal' => 'decimal:2',
+        'fecha_vencimiento' => 'date',
     ];
 
     public function purchase()

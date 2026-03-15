@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
 {
     //
+    use GeneratesUuid;
     protected $fillable = [
         'uuid',
         'empresa_id',
@@ -25,6 +27,21 @@ class Purchase extends Model
         'observaciones',
         'usuario_id',
     ];
+
+    protected $casts = [
+        'fecha_compra' => 'date',
+        'fecha_entrega_estimada' => 'date',
+        'fecha_entrega_real' => 'date',
+        'subtotal' => 'decimal:2',
+        'impuesto' => 'decimal:2',
+        'descuento' => 'decimal:2',
+        'total' => 'decimal:2',
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 
     public function company()
     {

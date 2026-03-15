@@ -8,7 +8,6 @@ class TransferDetail extends Model
 {
     //
     protected $fillable = [
-        'uuid',
         'transferencia_id',
         'producto_id',
         'inventario_origen_id',
@@ -17,6 +16,13 @@ class TransferDetail extends Model
         'cantidad_recibida',
         'lote',
         'fecha_vencimiento',
+    ];
+
+    protected $casts = [
+        'cantidad_solicitada' => 'integer',
+        'cantidad_enviada' => 'integer',
+        'cantidad_recibida' => 'integer',
+        'fecha_vencimiento' => 'date',
     ];
 
     public function transfer()

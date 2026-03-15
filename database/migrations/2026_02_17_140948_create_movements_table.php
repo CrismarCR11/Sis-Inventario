@@ -19,17 +19,17 @@ return new class extends Migration
             $table->unsignedBigInteger('producto_id');
             $table->unsignedBigInteger('inventario_id')->nullable();
     
-            $table->enum('tipo_movimiento', ['compra', 'venta', 'ajuste_entrada', 'ajuste_salida', 'transferencia_salida', 'transferencia_entrada', 'produccion', 'merma', 'devolucion_compra', 'devolucion_venta'])->notNull();
+            $table->enum('tipo_movimiento', ['compra', 'venta', 'ajuste_entrada', 'ajuste_salida', 'transferencia_salida', 'transferencia_entrada', 'produccion', 'merma', 'devolucion_compra', 'devolucion_venta']);
     
-            $table->integer('cantidad')->notNull();
-            $table->integer('stock_anterior')->notNull();
-            $table->integer('stock_nuevo')->notNull();
+            $table->integer('cantidad');
+            $table->integer('stock_anterior');
+            $table->integer('stock_nuevo');
     
             $table->string('referencia_tipo', 50)->nullable(); // 'App\Models\Compra', 'App\Models\Venta', etc.
             $table->unsignedBigInteger('referencia_id')->nullable();
     
             $table->text('motivo')->nullable();
-            $table->unsignedBigInteger('usuario_id')->notNull(); // Quién hizo el movimiento
+            $table->unsignedBigInteger('usuario_id'); // Quién hizo el movimiento
             $table->timestamps();
     
             $table->foreign('empresa_id')->references('id')->on('companies')->onDelete('restrict');

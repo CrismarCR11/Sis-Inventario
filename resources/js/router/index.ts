@@ -33,6 +33,18 @@ const router = createRouter({
         // },
         // Agrega más rutas hijas aquí
       ]
+    },
+    {
+      path: '/companies',
+      name: 'companies',
+      component: () => import('@/views/companies/index.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/companies/:id',
+      name: 'company-detail',
+      component: () => import('@/views/companies/CompanyDetail.vue'),
+      meta: { requiresAuth: true }
     }
   ]
 });

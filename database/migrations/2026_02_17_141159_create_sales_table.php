@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->char('uuid', 36)->unique()->notNull();
-            $table->unsignedBigInteger('empresa_id')->notNull();
-            $table->unsignedBigInteger('local_id')->notNull();
+            $table->char('uuid', 36)->unique();
+            $table->unsignedBigInteger('empresa_id');
+            $table->unsignedBigInteger('local_id');
             $table->string('cliente_nombre', 255)->nullable();
             $table->string('cliente_documento', 20)->nullable();
             $table->string('numero_comprobante', 100)->nullable();
             $table->enum('tipo_comprobante', ['boleta', 'factura', 'ticket', 'nota_credito'])->default('boleta');
-            $table->datetime('fecha_venta')->notNull();
-            $table->decimal('subtotal', 12, 2)->notNull();
-            $table->decimal('impuesto', 12, 2)->notNull();
+            $table->datetime('fecha_venta');
+            $table->decimal('subtotal', 12, 2);
+            $table->decimal('impuesto', 12, 2);
             $table->decimal('descuento', 12, 2)->default(0);
-            $table->decimal('total', 12, 2)->notNull();
+            $table->decimal('total', 12, 2);
             $table->enum('estado', ['completada', 'anulada', 'pendiente_pago'])->default('completada');
-            $table->unsignedBigInteger('usuario_id')->notNull();
+            $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
             $table->foreign('empresa_id')->references('id')->on('companies')->onDelete('RESTRICT');
             $table->foreign('local_id')->references('id')->on('locals')->onDelete('RESTRICT');

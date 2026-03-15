@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     //
+    use GeneratesUuid;
     protected $fillable = [
         'uuid',
         'empresa_id',
@@ -33,6 +35,17 @@ class Product extends Model
         'activo',
     ];
 
+    protected $casts = [
+        'imagenes_adicionales' => 'array',
+        'es_compuesto' => 'boolean',
+        'activo' => 'boolean',
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function company()
     {
         return $this->belongsTo(Company::class);
@@ -50,7 +63,7 @@ class Product extends Model
 
     public function inventories()
     {
-        return $this->hasMany(Inventory::class);
+        return $this->hasMany(Inventory::class, 'producto_id');
     }
 
     public function movements()

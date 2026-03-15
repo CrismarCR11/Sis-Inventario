@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Movement extends Model
 {
     //
+    use GeneratesUuid;
     protected $fillable = [
         'uuid',
         'empresa_id',
@@ -22,6 +24,17 @@ class Movement extends Model
         'motivo',
         'usuario_id',
     ];
+
+    protected $casts = [
+        'cantidad' => 'integer',
+        'stock_anterior' => 'integer',
+        'stock_nuevo' => 'integer',
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 
     public function company()
     {

@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('codigo')->unique();
             $table->string('nombre');
             $table->enum('tipo', ['principal', 'sucursal', 'almacen', 'punto_venta'])->default('sucursal');
-            $table->text('direccion');
+            $table->text('direccion')->nullable();
             $table->string('ciudad');
-            $table->string('telefono');
+            $table->string('telefono')->nullable();
             $table->string('email');
             $table->decimal('capacidad_maxima', 12, 2)->nullable();
             $table->boolean('activo')->default(true);

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('sale_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('venta_id')->notNull();
-            $table->unsignedBigInteger('producto_id')->notNull();
-            $table->unsignedBigInteger('inventario_id')->notNull();
-            $table->integer('cantidad')->notNull();
-            $table->decimal('precio_unitario', 12, 2)->notNull();
+            $table->unsignedBigInteger('venta_id');
+            $table->unsignedBigInteger('producto_id');
+            $table->unsignedBigInteger('inventario_id');
+            $table->integer('cantidad');
+            $table->decimal('precio_unitario', 12, 2);
             $table->decimal('descuento', 12, 2)->default(0);
             $table->decimal('subtotal', 12, 2)->generatedAlwaysAs('cantidad * precio_unitario - descuento')->stored();
             $table->foreign('venta_id')->references('id')->on('sales')->onDelete('cascade');

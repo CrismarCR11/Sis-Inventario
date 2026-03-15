@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Transfer extends Model
 {
     //
+    use GeneratesUuid;
     protected $fillable = [
         'uuid',
         'empresa_id',
@@ -22,6 +24,17 @@ class Transfer extends Model
         'usuario_envia_id',
         'usuario_recibe_id',
     ];
+
+    protected $casts = [
+        'fecha_solicitud' => 'date',
+        'fecha_envio' => 'date',
+        'fecha_recepcion' => 'date',
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 
     public function company()
     {
